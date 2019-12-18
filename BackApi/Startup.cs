@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dal;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,6 +17,8 @@ namespace BackApi
 {
     public class Startup
     {
+        private object builder;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +30,21 @@ namespace BackApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            // Ajouter le service sous dessus
+            services.AddDbContext<BlueContext>(options => {
+                options.UseSqlServer(this.Configuration.GetConnectionString("BlueConnection"));
+            });
+            services.AddCors(setupAction => 
+            {
+                setupAction.AddDefaultPolicy(builder =>
+                {
+                    //builder.WithOrigins("http://localhost:4200/"); // Pour autoriser une adresse précise
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +54,8 @@ namespace BackApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(); // Pour authoriser "Cors"
 
             app.UseHttpsRedirection();
 

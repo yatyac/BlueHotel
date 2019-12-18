@@ -211,7 +211,7 @@ namespace Dal
                 new BookingRoom()
                 {
                     Booking = bookings[2],
-                    Room = rooms[6],
+                    Room = rooms[5],
                 },
             };
 

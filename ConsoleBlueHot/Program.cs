@@ -14,7 +14,7 @@ namespace ConsoleBlueHot
                 
                 var bookings = context.Bookings.ToList();
             }
-                Console.WriteLine("Hello !");
+                Console.WriteLine("Hello world!");
         }
     }
 }
