@@ -40,6 +40,7 @@ namespace DomaineModel.Entities
         #endregion
 
         //Propriétés de navigation
+        [Required]
         public virtual Address Address { get; set; }
         public virtual ICollection<Room> Rooms { get; set; }
 

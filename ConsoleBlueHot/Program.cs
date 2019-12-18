@@ -10,7 +10,7 @@ namespace ConsoleBlueHot
         {
             using (BlueContext context = new BlueContext())
             {
-                context.Database.EnsureCreated();
+                context.Initialize(true);
                 
                 var bookings = context.Bookings.ToList();
             }

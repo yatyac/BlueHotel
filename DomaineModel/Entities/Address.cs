@@ -91,7 +91,6 @@ namespace DomaineModel.Entities
             get { return email; }
             set { email = value; }
         }
-        public virtual Hotel Hotel{ get; set; }
         #endregion
     }
 }

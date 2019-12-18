@@ -50,6 +50,7 @@ namespace DomaineModel.Entities
 
         [Range(0.0,double.MaxValue)]
         [Required]
+        [Column(TypeName ="decimal(5,2)")]
         public decimal Price
         {
             get { return price; }
