@@ -25,6 +25,7 @@ namespace Dal
         {
             // only mandatory for console app
             //optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb; Initial Catalog=BlueDb; Integrated Security=true");
+            optionsBuilder.UseSqlServer(@"Server=tcp:bluedbyy.database.windows.net,1433;Initial Catalog=BlueDb;Persist Security Info=False;User ID=yatyac;Password=Formation2;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30");
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
