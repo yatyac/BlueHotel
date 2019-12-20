@@ -7,7 +7,7 @@ import { Hotel } from './model/hotel';
   providedIn: 'root'
 })
 export class HotelService {
-  private apiUrl ='https://localhost:44374/api/hotels';
+  private apiUrl ='https://bluehotelyayac.azurewebsites.net/api/hotels';
   private httpOptions = {
     headers : new HttpHeaders({'content-type':'application/json'})
   };
